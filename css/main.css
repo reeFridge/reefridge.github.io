@@ -1,0 +1,32 @@
+body {
+	background: black;
+	color: green;
+}
+
+h2 {
+	font-family: monospace;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+.title {
+	margin: 0 auto;
+	margin-top: 300px;
+	display: block;
+	width: 190px;
+}
+
+.octicon {
+	display: inline-block;
+	vertical-align: text-top;
+	fill: ghostwhite;
+}
+
+.octlink {
+	margin: 5px auto;
+	display: block;
+	width: 32px;
+}

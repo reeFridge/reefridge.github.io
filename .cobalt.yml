@@ -1,0 +1,6 @@
+name: Fridge dump
+source: "."
+dest: "build"
+ignore:
+  - .git/*
+  - build/*

@@ -1,0 +1,15 @@
+extends: default.liquid
+---
+<div >
+	<h2 class="title" >Fridge`s dump</h2>
+	{% include '_layouts/ghlink.liquid' %}
+  <!--<br />-->
+  <div>
+    {% for post in posts %}
+      <div>
+        <h4>{{post.title}}</h4>
+        <h4><a href="{{post.path}}">{{ post.title }}</a></h4>
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/css/main.css" />
+        {% if is_post %}
+          <title>{{ title }}</title>
+        {% else %}
+       	  <title>fridgedump</title>
+        {% endif %}
+    </head>
+    <body>
+    <div>
+      {% if is_post %}
+        {% include '_layouts/post.liquid' %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </div>
+  </body>
+</html>
