@@ -4,3 +4,4 @@ dest: "build"
 ignore:
   - .git/*
   - build/*
+  - LICENSE
