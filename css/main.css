@@ -30,3 +30,10 @@ h2 {
 	display: block;
 	width: 32px;
 }
+
+.bgimage {
+	position: absolute;
+	left: 50%;
+	margin-left: -320px;
+	z-index: -1;
+}
