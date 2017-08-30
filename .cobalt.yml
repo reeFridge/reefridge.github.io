@@ -5,3 +5,6 @@ ignore:
   - .git/*
   - build/*
   - LICENSE
+  - gcc/*
+  - build.sh
+  - js/src/*
