@@ -12,11 +12,21 @@ h2 {
 	line-height: 26.4px;
 }
 
+canvas {
+	z-index: -2;
+	display: block;
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	background: black;
+	position: absolute;
+}
+
 .title {
 	margin: 0 auto;
-	margin-top: 300px;
+	padding-top: 300px;
+	text-align: center;
 	display: block;
-	width: 190px;
 }
 
 .octicon {
@@ -26,14 +36,15 @@ h2 {
 }
 
 .octlink {
-	margin: 5px auto;
+	margin: 10px auto;
 	display: block;
 	width: 32px;
 }
 
-.bgimage {
+.fridgeimg {
 	position: absolute;
 	left: 50%;
-	margin-left: -320px;
+	margin-left: -50px;
+	padding-top: 400px;
 	z-index: -1;
 }
