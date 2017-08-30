@@ -8,9 +8,6 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 
 window.onload = function() {
 	starField = new StarField('main_canvas', {
-		speed: 150,
-		amount: 150,
-		drawMethod: StarField.DrawMethod.RECTS,
 		max_size: 10
 	});
 	_loop_();
@@ -41,57 +38,78 @@ var Vector3 = function(x, y, z) {
 	this.x = x;
 	this.y = y;
 	this.z = z;
-}
+};
 
 
 /**
  * @param {string} canvasClass
- * @param {{
- *     speed: number,
- *     amount: number,
- *     max_depth: number,
- *     max_size: number,
- *     drawMethod: StarField.DrawMethod
- * }} settings
+ * @param {StarField.OptionalSettings=} opt_settings
  * @constructor
  */
-var StarField = function(canvasClass, settings) {
+var StarField = function(canvasClass, opt_settings) {
 	this.stars = [];
+	/**
+	 * @type {StarField.Settings}
+	 */
+	var default_settings = {
+		speed: 150,
+		amount: 150,
+		max_depth: 1000,
+		max_size: 3,
+		drawMethod: StarField.DrawMethod.RECTS
+	};
+	var settings = opt_settings || {};
 
 	/**
 	 * @type {number}
 	 */
-	this.max_depth = settings.max_depth || 1000;
+	this.max_depth = settings.max_depth || default_settings.max_depth;
 
 	/**
 	 * @type {number}
 	 */
-	this.max_size = settings.max_size || 3;
+	this.max_size = settings.max_size || default_settings.max_size;
 
 	/**
 	 * @type {number}
 	 */
-	this.speed = settings.speed || 150;
+	this.speed = settings.speed || default_settings.speed;
 
 	/**
 	 * @type {number}
 	 */
-	this.amount = settings.amount || 150;
+	this.amount = settings.amount || default_settings.amount;
 
 	/**
 	 * @type {StarField.DrawMethod}
 	 */
-	this.method = settings.drawMethod || StarField.DrawMethod.RECTS;
+	this.method = settings.drawMethod || default_settings.drawMethod;
 
+	/**
+	 * @type {number}
+	 */
 	this.last_frame = 0;
+
+	/**
+	 * @type {number}
+	 */
 	this.fps_time = 0;
+
+	/**
+	 * @type {number}
+	 */
 	this.fps_count = 0;
+
+	/**
+	 * @type {number}
+	 */
 	this.fps = 0;
 
 	/**
 	 * @type {Vector2}
 	 */
 	this.origin = new Vector2(0, 0);
+
 	this._init(canvasClass);
 };
 
@@ -215,7 +233,7 @@ StarField.prototype.draw_rects = function() {
  * @return {void}
  */
 StarField.prototype.draw_buffer = function() {
-	var pos = 0, x, y;
+	var pos = 0;
 	var length = this.img_data.data.length;
 	var width = this.img_data.width * 4;
 
@@ -299,6 +317,30 @@ StarField.prototype._init = function(canvasClass) {
 
 
 /**
+ * @typedef {{
+ *     speed: number,
+ *     amount: number,
+ *     max_depth: number,
+ *     max_size: number,
+ *     drawMethod: StarField.DrawMethod
+ * }}
+ */
+StarField.Settings;
+
+
+/**
+ * @typedef {{
+ *     speed: (undefined|number),
+ *     amount: (undefined|number),
+ *     max_depth: (undefined|number),
+ *     max_size: (undefined|number),
+ *     drawMethod: (undefined|StarField.DrawMethod)
+ * }}
+ */
+StarField.OptionalSettings;
+
+
+/**
  * @enum {string}
  */
 StarField.DrawMethod = {
@@ -311,7 +353,7 @@ StarField.DrawMethod = {
  * @return {void}
  */
 function _loop_() {
-	anim_id = window.requestAnimationFrame(_update_);
+	window.requestAnimationFrame(_update_);
 }
 
 
