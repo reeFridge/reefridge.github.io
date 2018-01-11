@@ -10,11 +10,40 @@ window.onload = function() {
 	starField = new StarField('main_canvas', {
 		max_size: 10
 	});
+
+	var pinned = document.getElementById('pinned_top');
+	pinned.style.top = Math.floor(window.innerHeight / 2 - pinned.getBoundingClientRect().height / 2) + 'px';
+
+	var content = document.getElementById('content');
+	content.classList.add('glow');
+
 	_loop_();
 };
 
 window.addEventListener('resize', function() {
-	starField.resize(window.innerWidth, window.innerHeight);
+	//starField.resize(window.innerWidth, 2000);
+});
+
+window.addEventListener('scroll', function() {
+	var pinned = document.getElementById('pinned_top');
+	var content = document.getElementById('content');
+
+	var yOffset = window.pageYOffset;
+
+	var padding = 300;
+
+	if (yOffset === 0) {
+		content.classList.add('glow');
+	} else {
+		content.classList.remove('glow');
+	}
+
+	if (yOffset < window.innerHeight - padding) {
+		pinned.classList.remove('substrate');
+		pinned.style.top = Math.floor((window.innerHeight - yOffset) / 2 - pinned.getBoundingClientRect().height / 2) + 'px';
+	} else {
+		pinned.classList.add('substrate');
+	}
 });
 
 /**
@@ -305,7 +334,7 @@ StarField.prototype.reset_origin = function() {
 StarField.prototype._init = function(canvasClass) {
 	this.canvas = document.getElementById(canvasClass);
 	this.ctx = this.canvas.getContext('2d');
-	this.resize(window.innerWidth, window.innerHeight);
+	this.resize(window.innerWidth, window.innerHeight - 50);
 	this.ctx.font = '18px Arial';
 
 	this.reset_origin();

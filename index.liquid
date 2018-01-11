@@ -1,17 +1,12 @@
-extends: default.liquid
+layout: default.liquid
 ---
 <div>
 	<canvas id="main_canvas"></canvas>
-	<img class="fridgeimg" src="img/fridge-in-space.png" />
-	<h2 class="title" >Fridge`s dump</h2>
-	{% include '_layouts/ghlink.liquid' %}
-  <!--<br />-->
-  <div>
-    {% for post in posts %}
-      <div>
-        <h4>{{post.title}}</h4>
-        <h4><a href="{{post.path}}">{{ post.title }}</a></h4>
-      </div>
-    {% endfor %}
-  </div>
+    <div id="pinned_top">
+	    <img class="fridgeimg" src="img/fridge-in-space.png" />
+	    <h2 class="title" >Fridge`s dump</h2>
+	    {% include 'ghlink.liquid' %}
+	</div>
+</div>
+<div id="content">
 </div>

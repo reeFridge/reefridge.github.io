@@ -3,20 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="/css/main.css" />
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 		<script src="/js/main.js"></script>
-        {% if is_post %}
-          <title>{{ title }}</title>
-        {% else %}
-       	  <title>fridgedump</title>
-        {% endif %}
-    </head>
+        <title>fridgedump</title>
     <body>
     <div>
-      {% if is_post %}
-        {% include '_layouts/post.liquid' %}
-      {% else %}
-        {{ content }}
-      {% endif %}
+      {{ page.content }}
     </div>
   </body>
 </html>

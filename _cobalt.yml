@@ -1,6 +1,5 @@
-name: Fridge dump
 source: "."
-dest: "build"
+destination: "build"
 ignore:
   - .git/*
   - build/*
