@@ -1,5 +1,12 @@
 source: "."
 destination: "build"
+site:
+  title: Fridge's dump
+  description: "Parse a Fridge"
+  base_url: "https://reefridge.github.io"
+  data: ~
+syntax_highlight:
+  theme: Solarized (dark)
 ignore:
   - .git/*
   - build/*
